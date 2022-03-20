@@ -13,7 +13,7 @@ const refreshTokenController = new RefreshJwtTokenController();
 
 router.post("/users", createUserController.handle)
 router.post("/login", authenticateUserController.handler)
-router.post("/refresh-token", refreshTokenController.haldle)
+router.post("/refresh-token", refreshTokenController.handler)
 
 router.get("/courses", Authenticate, (request, response) => {
     response.json([
