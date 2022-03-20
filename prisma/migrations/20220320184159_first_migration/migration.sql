@@ -1,4 +1,14 @@
 -- CreateTable
+CREATE TABLE "users" (
+    "id" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "username" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+
+    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "refresh-token" (
     "id" TEXT NOT NULL,
     "expiresIn" INTEGER NOT NULL,
@@ -6,6 +16,9 @@ CREATE TABLE "refresh-token" (
 
     CONSTRAINT "refresh-token_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_username_key" ON "users"("username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "refresh-token_userId_key" ON "refresh-token"("userId");
