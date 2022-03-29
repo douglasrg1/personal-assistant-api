@@ -28,7 +28,7 @@ jobs:
         cache: 'npm'    
     - name: yarn install, build and test
         run:|
-        npm install -g yarn
-        yarn 
-        yarn build
-        yarn test
+          npm install -g yarn
+          yarn install
+          yarn build
+          yarn test
