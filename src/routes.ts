@@ -1,7 +1,7 @@
 import { Router } from "express"
-import { Authenticate } from "./middlewares/authenticate";
+import { Authenticate } from "./middlewares/Authenticate";
 import { AuthenticateUserController } from "./useCases/authenticateUser/AuthenticateUserController";
-import { CreateUserController } from "./useCases/createUser/CreateuserController";
+import { CreateUserController } from "./useCases/createUser/CreateUserController";
 import { RefreshJwtTokenController } from "./useCases/refreshJwtToken/RefreshJwtTokenController";
 
 
