@@ -1,6 +1,6 @@
-FROM node:18.1-alpine
+FROM node:18.1-alpine as builder
 
-WORKDIR /usr
+WORKDIR /app
 
 COPY package.json ./
 
@@ -14,17 +14,17 @@ RUN npm install
 
 RUN npm run build
 
-## this is stage two , where the app actually runs
+## this is stage two
 
 FROM node:18.1-alpine
 
-WORKDIR /usr
+WORKDIR /app
 
 COPY package.json ./
 
 RUN npm install --only=production
 
-COPY --from=0 /usr/dist .
+COPY --from=builder /app/dist .
 
 RUN npm install pm2 -g
 
