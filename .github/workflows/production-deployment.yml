@@ -9,6 +9,7 @@ on:
 
 env:
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
+  ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
 
 
 jobs:
@@ -29,20 +30,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Login to Public ECR
-        id: login-ecr
-        uses: docker/login-action@v2
-        with:
-          registry: public.ecr.aws
-          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        env:
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
-          ECR_REGISTRY: public.ecr.aws
           IMAGE_TAG: ${{ github.sha }}
         run: |
           # Build a docker container and
