@@ -9,7 +9,6 @@ class CreateUserController {
         const user = await createUserUseCase.execute({name, username, password});
 
         return response.json(user);
-        
     }
 }
 
