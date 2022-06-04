@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/personal-assistant-task-definition",
+          "awslogs-group": "/ecs/personal-assistant-api",
           "awslogs-region": "us-east-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -37,7 +37,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "public.ecr.aws/e3e3e3d8/personal-assistant-api:latest",
+      "image": "700814272235.dkr.ecr.us-east-1.amazonaws.com/personal-assistant-api",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -54,7 +54,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "api-container"
+      "name": "personal-assistant-api"
     }
   ],
   "placementConstraints": [],
@@ -64,8 +64,8 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:700814272235:task-definition/personal-assistant-task-definition:1",
-  "family": "personal-assistant-task-definition",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:700814272235:task-definition/personal-assistant-api:2",
+  "family": "personal-assistant-api",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -83,7 +83,19 @@
       "targetId": null,
       "targetType": null,
       "value": null,
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
       "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-ecr-pull"
     },
     {
       "targetId": null,
@@ -108,7 +120,7 @@
     "cpuArchitecture": null
   },
   "cpu": "512",
-  "revision": 1,
+  "revision": 2,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
